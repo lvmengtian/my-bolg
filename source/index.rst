@@ -10,13 +10,7 @@
 .. toctree::
    :maxdepth: 2
    :glob:
-   :numbered:
 
    leetcode/index
-
-
-:ref:`genindex` 
-
-:ref:`abc <leetcode/index>` 
 
 
