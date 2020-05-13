@@ -1,0 +1,26 @@
+==================
+Leetcode 1. sum()
+==================
+
+.. toctree::
+    :maxdepth: 2
+    :titlesonly: 
+
+题目描述
+=======
+
+::
+
+  echo(12)
+
+.. code-block:: java
+  :linenos:
+  :emphasize-lines: 3,6
+
+  public void main(){}
+
+
+:doc:`index <../../index>`
+
+
+
