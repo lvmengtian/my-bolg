@@ -1,0 +1,344 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Leetcode 5. 最长回文子串 &mdash; 吕小毛杂货铺 0.0.1 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 吕小毛杂货铺
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Leetcode</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">吕小毛杂货铺</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Leetcode 5. 最长回文子串</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/leetcode/medium/5.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="leetcode-5">
+<h1>Leetcode 5. 最长回文子串<a class="headerlink" href="#leetcode-5" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>题目描述<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>给定一个字符串 s，找到 s 中最长的回文子串。你可以假设&nbsp;s 的最大长度为 1000。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>示例 1：
+输入: &quot;babad&quot;
+输出: &quot;bab&quot;
+注意: &quot;aba&quot; 也是一个有效答案。
+
+示例 2：
+输入: &quot;cbbd&quot;
+输出: &quot;bb&quot;
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>思路<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>通过特殊符号将字符串分割，使得字符串长度为奇数。则可以逐步遍历字符串，然后判断以下标`i`为中心的最长回文串，并返回左右边界下标。</p>
+</div>
+<div class="section" id="id3">
+<h2>代码<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="highlight-java notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="n">String</span> <span class="nf">longestPalindrome</span><span class="p">(</span><span class="n">String</span> <span class="n">s</span><span class="p">){</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">s</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">s</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+  <span class="kt">int</span> <span class="n">minLeft</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">maxRight</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">len</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="p">();</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kt">int</span><span class="o">[]</span> <span class="n">res</span> <span class="o">=</span> <span class="n">findLeftAndRight</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+      <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">res</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">res</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">&gt;</span> <span class="n">maxRight</span> <span class="o">-</span> <span class="n">minLeft</span><span class="p">){</span>
+          <span class="n">maxRight</span> <span class="o">=</span> <span class="n">right</span><span class="p">;</span>
+          <span class="n">minLeft</span> <span class="o">=</span> <span class="n">left</span><span class="p">;</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="n">String</span> <span class="n">ans</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">minLeft</span><span class="p">,</span> <span class="n">maxRight</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">ans</span><span class="p">.</span><span class="na">replace</span><span class="p">(</span><span class="s">&quot;#&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">private</span> <span class="n">String</span> <span class="nf">join</span><span class="p">(</span><span class="n">String</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">char</span><span class="o">[]</span> <span class="n">chs</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="na">toCharArray</span><span class="p">();</span>
+    <span class="n">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">();</span>
+    <span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;#&quot;</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">char</span> <span class="n">ch</span> <span class="p">:</span> <span class="n">chs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">ch</span> <span class="o">+</span> <span class="s">&quot;#&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">String</span><span class="p">(</span><span class="n">sb</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">private</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">findLeftAndRight</span><span class="p">(</span><span class="n">String</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">idx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">idx</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">idx</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">left</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">right</span> <span class="o">&lt;</span> <span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">s</span><span class="p">.</span><span class="na">charAt</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="o">==</span> <span class="n">s</span><span class="p">.</span><span class="na">charAt</span><span class="p">(</span><span class="n">right</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">left</span><span class="o">--</span><span class="p">;</span>
+        <span class="n">right</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span><span class="p">{</span><span class="n">left</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">right</span> <span class="o">-</span> <span class="mi">1</span><span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">longestPalindrome</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  :type s: str</span>
+<span class="sd">  :rtype: str</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">s</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">s</span>
+  <span class="c1"># 使用特殊字符分割字符串，使之成为基数长度</span>
+  <span class="n">new_s</span> <span class="o">=</span> <span class="s1">&#39;#&#39;</span> <span class="o">+</span> <span class="s1">&#39;#&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;#&#39;</span>
+  <span class="n">min_left</span> <span class="o">=</span> <span class="n">max_right</span> <span class="o">=</span> <span class="mi">0</span>
+
+  <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">new_s</span><span class="p">)):</span>
+      <span class="n">l</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">new_s</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">r</span> <span class="o">-</span> <span class="n">l</span> <span class="o">&gt;</span> <span class="n">max_right</span> <span class="o">-</span> <span class="n">min_left</span><span class="p">:</span>
+          <span class="n">min_left</span><span class="p">,</span> <span class="n">max_right</span> <span class="o">=</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span>
+
+  <span class="n">res</span> <span class="o">=</span> <span class="n">new_s</span><span class="p">[</span><span class="n">min_left</span><span class="p">:</span><span class="n">max_right</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+  <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+  <span class="n">l</span> <span class="o">=</span> <span class="n">r</span> <span class="o">=</span> <span class="n">idx</span>
+  <span class="k">while</span> <span class="n">l</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="ow">and</span> <span class="n">s</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">==</span> <span class="n">s</span><span class="p">[</span><span class="n">r</span><span class="p">]:</span>
+      <span class="n">l</span> <span class="o">-=</span> <span class="mi">1</span>
+      <span class="n">r</span> <span class="o">+=</span> <span class="mi">1</span>
+  <span class="k">return</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">r</span> <span class="o">-</span> <span class="mi">1</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/longest-substring-without-repeating-characters
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, 吕小毛
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

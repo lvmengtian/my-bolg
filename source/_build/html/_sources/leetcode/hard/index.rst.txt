@@ -1,11 +1,8 @@
 ======
-Leetcode-中等
+Leetcode-困难
 ======
 .. toctree::
   :maxdepth:1
   :titlesonly:
 
   2
-  3
-  5
-  6

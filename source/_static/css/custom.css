@@ -1,0 +1,11 @@
+.wy-side-scroll {
+  width: 400px !important;
+}
+
+.wy-menu-vertical {
+  width: 350px;
+}
+
+.toctree-l3 a:hover{
+  font-weight: bold !important;
+} 
